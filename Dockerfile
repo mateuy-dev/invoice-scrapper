@@ -1,4 +1,5 @@
 FROM ruby:2.3.1
+MAINTAINER mateuyabar@equinox.one
 
 ENV INSTALL_PATH /app
 RUN mkdir -p $INSTALL_PATH

@@ -1,6 +1,8 @@
 require "selenium-webdriver"
 require 'yaml'
 
+sleep 5
+
 secrets = YAML.load_file('secrets.yml')
 
 
@@ -11,7 +13,7 @@ password = secrets["pepephone"]["password"]
 
 # Downloads not working on firefox
 # driver = Selenium::WebDriver.for :remote, :url => "http://localhost:4444/wd/hub", :desired_capabilities => :firefox
-driver = Selenium::WebDriver.for :remote, :url => "http://localhost:4444/wd/hub", :desired_capabilities => :chrome
+driver = Selenium::WebDriver.for :remote, :url => "http://selenium:4444/wd/hub", :desired_capabilities => :chrome
 driver.navigate.to url
 
 # Login

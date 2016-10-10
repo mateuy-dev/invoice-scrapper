@@ -1,12 +1,20 @@
-selenium:
-  #image: selenium/standalone-firefox
-  image: selenium/standalone-chrome
-  volumes: 
-    - ./downloads:/home/seluser/Downloads
-  environment:
-    # Required to avoid container startup hanging sometimes in
-    # some environments
-    JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
-  ports:
-    - "4444:4444"
-    - "5900:5900"
+version: '2'
+services:
+  pepephone:
+    build: .
+    depends_on:
+      - selenium
+    volumes: 
+      - ./secrets.yml:/app/secrets.yml
+  selenium:
+    #image: selenium/standalone-firefox
+    image: selenium/standalone-chrome
+    volumes: 
+      - ./downloads:/home/seluser/Downloads
+    environment:
+      # Required to avoid container startup hanging sometimes in
+      # some environments
+      JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
+    #ports:
+    #  - "4444:4444"
+    #  - "5900:5900"

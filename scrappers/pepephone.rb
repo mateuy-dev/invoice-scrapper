@@ -1,6 +1,7 @@
 require "selenium-webdriver"
 require 'yaml'
 
+#Waiting for selenium to start
 sleep 5
 
 secrets = YAML.load_file('secrets.yml')
@@ -11,15 +12,19 @@ invoices_url="https://www.pepephone.com/mipepephone/movil/facturas"
 email = secrets["pepephone"]["email"]
 password = secrets["pepephone"]["password"]
 
+email_id = '#formRequestLogin #email'
+pass_id = '#formRequestLogin #password'
+
+
 # Downloads not working on firefox
 # driver = Selenium::WebDriver.for :remote, :url => "http://localhost:4444/wd/hub", :desired_capabilities => :firefox
 driver = Selenium::WebDriver.for :remote, :url => "http://selenium:4444/wd/hub", :desired_capabilities => :chrome
 driver.navigate.to url
 
 # Login
-email_element = driver.find_element(:css, '#formRequestLogin #email')
+email_element = driver.find_element(:css, email_id)
 email_element.send_keys email
-password_element = driver.find_element(:css, '#formRequestLogin #password')
+password_element = driver.find_element(:css, pass_id)
 password_element.send_keys password
 email_element.submit
 

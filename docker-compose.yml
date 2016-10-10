@@ -1,6 +1,6 @@
 version: '2'
 services:
-  pepephone:
+  scrapper:
     build: .
     depends_on:
       - selenium
@@ -15,6 +15,6 @@ services:
       # Required to avoid container startup hanging sometimes in
       # some environments
       JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
-    #ports:
-    #  - "4444:4444"
-    #  - "5900:5900"
+    ports:
+      - "4444:4444"
+      - "5900:5900"
